@@ -26,7 +26,7 @@ const REGISTER = gql`
   }
 `;
 
-const Register: React.FC = () => {
+export const Register: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -119,6 +119,4 @@ const Register: React.FC = () => {
       </Box>
     </Container>
   );
-};
-
-export default Register; 
+}; 
