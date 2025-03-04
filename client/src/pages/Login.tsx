@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { useAuth } from '../hooks/useAuth';
 
-const Login: React.FC = () => {
+export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, error } = useAuth();
@@ -82,6 +82,4 @@ const Login: React.FC = () => {
       </Box>
     </Container>
   );
-};
-
-export default Login; 
+}; 
