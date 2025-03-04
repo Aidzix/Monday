@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import App from './App';
-import theme from './theme';
+import { theme } from './theme';
 
 // Create Apollo Client
 const client = new ApolloClient({
