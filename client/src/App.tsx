@@ -9,9 +9,8 @@ import { Register } from './pages/Register';
 import { Dashboard } from './pages/Dashboard';
 import { Board } from './pages/Board';
 import { PrivateRoute } from './components/PrivateRoute';
-import { SupabaseTest } from './components/SupabaseTest';
 
-function App() {
+export const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -19,7 +18,6 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/test" element={<SupabaseTest />} />
           <Route
             path="/"
             element={
@@ -44,6 +42,4 @@ function App() {
       </Router>
     </ThemeProvider>
   );
-}
-
-export default App; 
+}; 
