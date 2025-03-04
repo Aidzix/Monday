@@ -1,0 +1,144 @@
+type User {
+  id: ID!
+  email: String!
+  name: String!
+  role: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Column {
+  id: ID!
+  title: String!
+  type: String!
+  settings: JSON
+}
+
+type Group {
+  id: ID!
+  title: String!
+  itemIds: [ID!]!
+}
+
+type Item {
+  id: ID!
+  boardId: ID!
+  groupId: ID!
+  title: String!
+  description: String
+  values: JSON
+  createdBy: ID!
+  updatedBy: ID!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Board {
+  id: ID!
+  title: String!
+  description: String
+  ownerId: ID!
+  memberIds: [ID!]!
+  columns: [Column!]!
+  groups: [Group!]!
+  settings: JSON
+  createdAt: String!
+  updatedAt: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  name: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input CreateBoardInput {
+  title: String!
+  description: String
+}
+
+input UpdateBoardInput {
+  title: String
+  description: String
+  settings: JSON
+}
+
+input CreateItemInput {
+  boardId: ID!
+  groupId: ID!
+  title: String!
+  description: String
+  values: JSON
+}
+
+input UpdateItemInput {
+  title: String
+  description: String
+  values: JSON
+}
+
+input CreateGroupInput {
+  boardId: ID!
+  title: String!
+}
+
+input UpdateGroupInput {
+  title: String!
+}
+
+input CreateColumnInput {
+  boardId: ID!
+  title: String!
+  type: String!
+  settings: JSON
+}
+
+input UpdateColumnInput {
+  title: String
+  type: String
+  settings: JSON
+}
+
+type Query {
+  me: User
+  boards: [Board!]!
+  board(id: ID!): Board
+  items(boardId: ID!): [Item!]!
+  item(id: ID!): Item
+  groups(boardId: ID!): [Board!]!
+  columns(boardId: ID!): [Board!]!
+}
+
+type Mutation {
+  register(input: RegisterInput!): AuthPayload!
+  login(input: LoginInput!): AuthPayload!
+  createBoard(input: CreateBoardInput!): Board!
+  updateBoard(id: ID!, input: UpdateBoardInput!): Board!
+  deleteBoard(id: ID!): Boolean!
+  createItem(input: CreateItemInput!): Item!
+  updateItem(id: ID!, input: UpdateItemInput!): Item!
+  deleteItem(id: ID!): Boolean!
+  moveItem(id: ID!, groupId: ID!, index: Int!): Item!
+  createGroup(input: CreateGroupInput!): Board!
+  updateGroup(boardId: ID!, groupId: ID!, input: UpdateGroupInput!): Board!
+  deleteGroup(boardId: ID!, groupId: ID!): Board!
+  reorderGroups(boardId: ID!, groupIds: [ID!]!): Board!
+  createColumn(input: CreateColumnInput!): Board!
+  updateColumn(boardId: ID!, columnId: ID!, input: UpdateColumnInput!): Board!
+  deleteColumn(boardId: ID!, columnId: ID!): Board!
+  reorderColumns(boardId: ID!, columnIds: [ID!]!): Board!
+  addMember(boardId: ID!, userId: ID!): Board!
+  removeMember(boardId: ID!, userId: ID!): Board!
+}
+
+scalar JSON 
