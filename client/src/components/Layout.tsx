@@ -24,7 +24,11 @@ import { useAuth } from '../hooks/useAuth';
 
 const drawerWidth = 240;
 
-export const Layout: React.FC = () => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -141,7 +145,7 @@ export const Layout: React.FC = () => {
         }}
       >
         <Toolbar />
-        <Outlet />
+        {children}
       </Box>
     </Box>
   );
