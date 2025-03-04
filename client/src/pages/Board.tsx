@@ -124,7 +124,7 @@ export const Board: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
   const [title, setTitle] = useState('');
-  const { loading, error, data } = useQuery(GET_BOARD, {
+  const { loading, error, data, refetch } = useQuery(GET_BOARD, {
     variables: { id: boardId },
   });
   const [createItem] = useMutation(CREATE_ITEM, {
