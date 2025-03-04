@@ -6,7 +6,7 @@ interface PrivateRouteProps {
   children: React.ReactNode;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+export const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -18,6 +18,4 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   }
 
   return <>{children}</>;
-};
-
-export default PrivateRoute; 
+}; 
