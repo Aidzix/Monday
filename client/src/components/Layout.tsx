@@ -24,7 +24,7 @@ import { useAuth } from '../hooks/useAuth';
 
 const drawerWidth = 240;
 
-const Layout: React.FC = () => {
+export const Layout: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -145,6 +145,4 @@ const Layout: React.FC = () => {
       </Box>
     </Box>
   );
-};
-
-export default Layout; 
+}; 

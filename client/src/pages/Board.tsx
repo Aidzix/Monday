@@ -119,7 +119,7 @@ interface Board {
   items: Item[];
 }
 
-const Board: React.FC = () => {
+export const Board: React.FC = () => {
   const { boardId } = useParams<{ boardId: string }>();
   const [open, setOpen] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
@@ -306,6 +306,4 @@ const Board: React.FC = () => {
       </Dialog>
     </Box>
   );
-};
-
-export default Board; 
+}; 

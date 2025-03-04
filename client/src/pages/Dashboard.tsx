@@ -51,7 +51,7 @@ interface Board {
   updatedAt: string;
 }
 
-const Dashboard: React.FC = () => {
+export const Dashboard: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -151,6 +151,4 @@ const Dashboard: React.FC = () => {
       </Dialog>
     </Box>
   );
-};
-
-export default Dashboard; 
+}; 
