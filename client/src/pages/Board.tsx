@@ -136,15 +136,20 @@ export const Board: React.FC = () => {
 
   useEffect(() => {
     if (data?.board) {
-      // Set up real-time updates using Socket.IO
+      // Set up real-time updates using WebSocket
       const socket = new WebSocket(`ws://localhost:4000/board/${boardId}`);
+      
       socket.onmessage = (event) => {
         const update = JSON.parse(event.data);
-        // Handle real-time updates
+        // Refetch board data when changes occur
+        refetch();
       };
-      return () => socket.close();
+
+      return () => {
+        socket.close();
+      };
     }
-  }, [boardId, data]);
+  }, [boardId, data, refetch]);
 
   const handleCreateItem = async () => {
     if (!selectedGroup) return;
